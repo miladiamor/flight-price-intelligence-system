@@ -58,8 +58,10 @@ outputs/
 cache/
 debug/
 exports/
-ml-workspace/
-
+ml-workspace/outputs/
+ml-workspace/raw data/
+ml-workspace/route data/
+ml-workspace/trained models/
 # =====================================
 # Models
 # =====================================
