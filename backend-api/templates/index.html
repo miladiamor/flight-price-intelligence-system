@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Flight Assistant (3 Models Demo)</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fff; margin:0; padding:24px; }
+    .container { max-width: 980px; margin: 0 auto; }
+    h1 { margin: 0 0 6px 0; }
+    .muted { color:#666; font-size: 13px; }
+    .card { background:#fff; border:1px solid #ddd; border-radius:10px; padding:18px; margin-top:16px; }
+    .row { display:flex; gap:16px; flex-wrap:wrap; }
+    .col { flex:1; min-width:260px; }
+    input { width:100%; padding:10px; border:1px solid #ccc; border-radius:8px; }
+    button { padding:10px 14px; border:0; border-radius:10px; cursor:pointer; }
+    .btn { background:#111; color:#fff; }
+    .btn2 { background:#eee; }
+    .badge { display:inline-block; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px; }
+    .badge.buy { background:#d1fae5; color:#065f46; }
+    .badge.wait { background:#fef3c7; color:#92400e; }
+    .badge.neutral { background:#e5e7eb; color:#111827; }
+    .badge.skip { background:#fee2e2; color:#991b1b; }
+    table { width:100%; border-collapse: collapse; }
+    th, td { border-bottom:1px solid #eee; padding:8px; text-align:left; font-size:14px; }
+    th { font-size:13px; color:#555; }
+    .tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .tag { font-size:12px; padding:4px 8px; background:#f3f4f6; border-radius:999px; }
+    pre { background:#0b1020; color:#e5e7eb; padding:14px; border-radius:10px; overflow:auto; font-size:12px; }
+    .best-row td { background:#f5f3ff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Flight Assistant (3 Models Demo)</h1>
+    <div class="muted">Price prediction + Buy/Wait advisor + Destination recommender</div>
+
+    <div class="card">
+      <h2 style="margin-top:0">Search</h2>
+
+      <div class="row">
+        <div class="col">
+          <div class="muted">Origin (IATA)</div>
+          <input id="origin" value="BER" />
+        </div>
+        <div class="col">
+          <div class="muted">Destination (IATA)</div>
+          <input id="destination" value="CDG" />
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:10px">
+        <div class="col">
+          <div class="muted">Date (YYYY-MM-DD)</div>
+          <input id="date" value="2026-02-15" />
+        </div>
+        <div class="col">
+          <div class="muted">User ID (optional)</div>
+          <input id="user_id" value="1" />
+        </div>
+      </div>
+
+      <div style="margin-top:14px; display:flex; gap:10px; align-items:center;">
+        <button id="btnPredict" class="btn">Search</button>
+        <button id="btnToggleDebug" class="btn2">Toggle Debug JSON</button>
+        <div id="status" class="muted"></div>
+      </div>
+    </div>
+
+    <div id="resultsCard" class="card" style="display:none;">
+      <h2 style="margin-top:0">Results</h2>
+
+      <div class="row">
+        <div class="col card">
+          <h3 style="margin-top:0">Model 1: Predicted Price</h3>
+          <div id="priceBox"></div>
+        </div>
+
+        <div class="col card">
+          <h3 style="margin-top:0">Model 2: Advisor</h3>
+          <div id="advisorBox"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <h3 style="margin-top:0">Price Trend (Next 7 Days)</h3>
+        <div id="trendBox" class="muted">Run a search to see the curve.</div>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <h3 style="margin-top:0">Model 3: Recommended Alternatives</h3>
+        <div id="recsBox"></div>
+      </div>
+    </div>
+
+    <div id="debugCard" class="card" style="display:none;">
+      <h2 style="margin-top:0">Debug JSON</h2>
+      <pre id="debugJson"></pre>
+    </div>
+  </div>
+
+  <script>
+    console.log("✅ index.html loaded");
+  </script>
+  <script src="/static/app.js?v=2"></script>
+</body>
+</html>
